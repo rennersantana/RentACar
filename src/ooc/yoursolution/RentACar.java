@@ -13,7 +13,7 @@ import ooc.enums.Month;
  *
  * @author rennersantana
  */
-public class RentACar implements RentACarInterface {
+public class RentACar implements RentACarInterface {            //implementing RentACar class to the interface
 
     @Override
     public List<CarInterface> getCars() {
