@@ -7,7 +7,6 @@ package rentacar;
 
 // This line will give you an error until you create the needed class.
 import ooc.yoursolution.BookingSystem;
-
 import ooc.yoursolution.BookingSystemInterface;
 import ooc.yoursolution.RentACarInterface;
 import ooc.enums.Make;
@@ -40,13 +39,12 @@ public class Driver {
         BookingSystemInterface bookingSystem = new BookingSystem();
 
         String file = "amilcar_rentals.txt";
-        BufferedReader in = new BufferedReader(new FileReader(file));
-
-        RentACarInterface rentACar = bookingSystem.setupRentACar(in);
-
+        BufferedReader in = new BufferedReader(new FileReader(file)); // read the file from the txt
+        RentACarInterface rentACar = bookingSystem.setupRentACar(in); // settup a booking
+        
         // Get the name of the car rental
         System.out.println(rentACar.getName());
-        
+    
         // Print the number of cars in the rent-a-car
         System.out.println(rentACar.getNumberOfCars());  
         
@@ -58,6 +56,13 @@ public class Driver {
         System.out.println(rentACar.getCarAvailable(Month.JANUARY, 1, Make.BMW, 5));
         
         // Try some bookings
+  
+          System.out.println("---- Bookings ----"); // outputs
+        System.out.println(rentACar.bookCar(Month.JANUARY, 1, Make.BMW, 5));
+        System.out.println(rentACar.bookCar(Month.JANUARY, 1, Make.BMW, 5));
+        System.out.println(rentACar.bookCar(Month.JANUARY, 1, Make.BMW, 5));
+        System.out.println(rentACar.bookCar(Month.JANUARY, 1, Make.BMW, 5));
+        
         System.out.println(rentACar.bookCar(Month.JANUARY, 1, Make.BMW, 5));
         System.out.println(rentACar.bookCar(Month.JANUARY, 1, Make.BMW, 5));
         System.out.println(rentACar.bookCar(Month.JANUARY, 1, Make.BMW, 5));
