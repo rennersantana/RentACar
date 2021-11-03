@@ -20,7 +20,7 @@ import java.io.IOException;
 
 
 // Aurelio Almeida - Student number 2020329
-// Renner Santana - Student number 2020382
+// Renner dos Santos Santana - Student number 2020382
 
 
 
