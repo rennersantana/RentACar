@@ -21,6 +21,10 @@ public class Car implements CarInterface {
     private Map<Month, boolean[]>availability;
     private double dailyRate;
     //attributes. Valued signed to create setters and getter
+
+    Car(Make valueOf, float dailyRate) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     @Override
     public Map<Month, boolean[]> createAvailability() {
