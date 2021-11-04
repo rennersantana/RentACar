@@ -22,25 +22,29 @@ public class BookingSystem implements BookingSystemInterface {
     @Override
     public RentACarInterface setupRentACar(BufferedReader in) throws IOException {
      
-        rentACar = new RentACar();       //creating a new method to read the file and using the information to populate the book system
-        rentACar.setName(in.readLine());      //setting name for the first line of the file as the structure will not change
-        
-        String line = in.readLine();
-        
-        List<CarInterface> cars = new ArrayList<>();  //creating a list of cars
-        while (line != null){           //looping  
-            String[] parts = line.split(":");         ////if is not null, separate in a array of strings, separate by ":" as is in the file
-            int numOfCars = Integer.parseInt(parts[parts.length-1]);   //separating the line in a array of 3 words, 0-2 index 
-            for (int i=0; i<numOfCars;i++){        //looping to insert the car into the list
-                float dailyRate = Float.parseFloat(parts[1]); //transform dailyRate into String beucause comes from a file as String 
-                String makeString = parts[0];   //makeString as using enums
-                Car c = new Car(Make.valueOf(makeString),dailyRate); //create object a new car with constructors (enum and dailyrate)  
-                cars.add(c); //add into the list
+         int aux = 0;
+            rentACar = new RentACar(); //creating a new method to read the file and using the information to populate the book system
+            rentACar.setName(in.readLine()); //setting name for the first line of the file as the structure will not change
+
+            String line = in.readLine();
+
+
+            List<CarInterface> cars = new ArrayList<>();  //creating a list of cars
+            while (line != null){  //looping
+               String[] parts = line.split(":"); //if is not null, separate in a array of strings, separate by ":" as is in the file
+               int numOfCars = Integer.parseInt(parts[parts.length-1]); //separating the line in a array of 3 words, 0-2 index 
+               for (int i=0;i<numOfCars;i++) { //looping to insert the car into the list
+                   float dailyRate = Float.parseFloat(parts[1]);//transform dailyRate into String beucause comes from a file as String 
+                   String makeString = parts[0];  //makeString as using enums
+                   Car c = new Car(aux,Make.valueOf(makeString),dailyRate); //create object a new car with constructors (enum and dailyrate)
+                   c.createAvailability();
+                   cars.add(c); //add into the list
+                   aux++;
+               }
+                line = in.readLine(); //read and repeat
             }
-            line = in.readLine();    //read and repeat
-        }
-        rentACar.setCars(cars);   //setting the cars with the list created 
-        return rentACar;
+            rentACar.setCars(cars); //setting the cars with the list created 
+            return rentACar;
     }
     
 }

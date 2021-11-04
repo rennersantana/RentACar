@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 import ooc.enums.Make;
 import ooc.enums.Month;
+import java.util.Arrays;
 
 /**
  *
@@ -16,20 +17,30 @@ import ooc.enums.Month;
  */
 public class Car implements CarInterface {
 
-    private int id;             
+    private int id;
     private Make make;
-    private Map<Month, boolean[]>availability;
+    private Map<Month, boolean[]> availability;
     private double dailyRate;
-    //attributes. Valued signed to create setters and getter
-    
-    public Car (Make make, double dailyRate){
+
+    public Car(int id,Make make,double dailyRate) {
+        this.id = id;
         this.make = make;
-        this.dailyRate = dailyRate; // updating class contructor
+        this.dailyRate = dailyRate;
     }
     
     @Override
     public Map<Month, boolean[]> createAvailability() {
-        availability = new HashMap<>();
+     availability = new HashMap<>();
+        for (Month month : Arrays.asList(Month.values())) {
+
+            boolean[] myAvailability = new boolean[month.getNumberOfDays()];
+            // filling the entire array to true, meaning the all the days are available
+            Arrays.fill(myAvailability,true);
+            availability.put(month,myAvailability);
+
+        }
+
+
         return availability;
     }
 
